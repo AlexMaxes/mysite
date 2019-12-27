@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+</head>
+<style>
+    label,input{
+        color: brown;
+        font-family: Consolas;
+        font-weight: bold;
+    }
+    label{
+        margin-left: 8px;
+    }
+    body{
+        background:linear-gradient(-90deg,#ccffff,#ffcccc);
+    }
+</style>
+<body>
+<div style="margin:15% 40%;background-color: skyblue;padding: 30px 5px;border-radius: 10px;" >
+    <form action="/login/" method="post">
+        <p>
+            <label for="id_username">UserName:</label>
+            <input type="text" id="id_username" name="username" placeholder="用户名" autofocus required style="float: right; margin-right: 10px"/>
+        </p>
+        <p>
+            <label for="id_password">PassWord:</label>
+            <input type="password" id="id_password" placeholder="密码" name="password" required style="float: right ;margin-right:10px"/>
+        </p>
+        <input type="submit" value="login" style="border-radius: 5px; width: 50%;margin: auto 25%">
+    </form>
+</div>
+</body>
+</html>

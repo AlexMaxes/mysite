@@ -1,0 +1,56 @@
+body {
+    height: 100%;
+    background-image: url("../image/background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100vh;
+
+}
+
+.form-login {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 80px auto 0;
+    font-weight: 400;
+}
+
+.form-login .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+    z-index: 2;
+}
+
+.form-login input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-login input[type="password"] {
+    margin-bottom: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+form a {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 12px;
+    line-height: 10px;
+}
+
+ins, label {
+    border-radius: 3px;
+    background-color: rgba(222, 184, 135, 0.6);
+    padding: 5px;
+    font-weight: bold;
+}
+
+ins {
+    color: black;
+    text-decoration: none;
+    background-color: rgba(255, 244, 0, 0.8);
+}
