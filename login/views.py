@@ -134,15 +134,14 @@ def make_confirm_string(user):
 def send_email(name, email, code):
     from django.core.mail import EmailMultiAlternatives
 
-    subject = 'Automatic registration confirmation email from ALEX'
-    text_content = 'Just test content! There will be more in future!  And if you can see this, contact the administrator'
+    subject = 'Automatic registration confirmation email from ALEXMAXES'
+    text_content = 'Just test content! There will be more in future!  And if you can see this,you can\'t get the emailcode, please contact the administrator '
     # text_content是用于当HTML内容无效时的替代txt文本
     html_content = '<p>Hi! {}!</p><p>Just test content! There will be more in future! And here is your ' \
                    '<a href="http://{}/confirm/?code={}" target=blank>Confirm link! </a>' \
                    'Click that to confirm your sign up! And this link is valid for {} days！</p>' \
-                   '<p>welcome to my site:<a href="http://127.0.0.1:8000/login/" target=blank>www.wushuang.com</a>' \
-                   '(There is empty, just for now :)</p> <p>AlexMaxes</p>'.format(name, '127.0.0.1:8000', code,
-                                                                                  settings.CONFIRM_DAYS)
+                   '<p>welcome to my site:<a href="http://47.93.231.184" target=blank>www.wushuang.com</a>' \
+                   '(There is empty, just for now :)</p> <p>AlexMaxes</p>'.format(name, '47.93.231.184', code,settings.CONFIRM_DAYS)
     msg = EmailMultiAlternatives(subject, text_content, settings.EMAIL_HOST_USER, [email])
     msg.attach_alternative(html_content, "text/html")
     msg.send()

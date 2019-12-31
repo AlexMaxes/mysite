@@ -29,5 +29,6 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path('favicon.ico', RedirectView.as_view(url='static/favicon.ico')),
     path('confirm/',views.user_confirm),
-    url(r'^$',views.index)
+    url(r'^$',views.index),
 ]
+

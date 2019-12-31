@@ -22,9 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ezod8rh^rgwo)&x(xk^c#f6)^v2t7on1hk58yarm640ul-s@hq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['47.93.231.184']
 
 # Application definition
 
@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'login',
-    'captcha'
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -119,8 +119,11 @@ STATIC_URL = '/static/'
 # email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.qq.com'
-EMAIL_PORT = 25
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'wushuangmail@foxmail.com'
 EMAIL_HOST_PASSWORD = 'aywrbqycafcmbfed'
 
 CONFIRM_DAYS = 3
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
