@@ -98,7 +98,7 @@ def register(request):
 
                 code = make_confirm_string(new_user)
                 send_email(username,email, code)
-
+                request.session['mail_send'] = True
                 return redirect('/login/')
         else:
             return render(request, 'login/register.html', locals())
@@ -139,7 +139,7 @@ def send_email(name, email, code):
     # text_content是用于当HTML内容无效时的替代txt文本
     html_content = '<p>Hi! {}!</p><p>Just test content! There will be more in future! And here is your ' \
                    '<a href="http://{}/confirm/?code={}" target=blank>Confirm link! </a>' \
-                   'Click that to confirm your sign up! And this link is valid for {} days！</p>' \
+                   'Click that to confirm your sign up! And that link is valid for {} days！</p>' \
                    '<p>welcome to my site:<a href="http://47.93.231.184" target=blank>www.wushuang.com</a>' \
                    '(There is empty, just for now :)</p> <p>AlexMaxes</p>'.format(name, '47.93.231.184', code,settings.CONFIRM_DAYS)
     msg = EmailMultiAlternatives(subject, text_content, settings.EMAIL_HOST_USER, [email])
@@ -167,4 +167,5 @@ def user_confirm(request):
         confirm.user.save()
         confirm.delete()
         message = '注册成功！！！马上跳转登陆页面~'
+        request.session.flush()
         return render(request, 'login/confirm.html', locals())
