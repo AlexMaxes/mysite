@@ -20,7 +20,7 @@
             {% elif message %}
                 <div class="alert alert-warning">{{ message }}</div>
             {% elif request.session.mail_send %}
-                <div alert alert-success>居然注册成功了！快去邮箱确认再来登陆吧~</div>
+                <div class="alert alert-success">居然注册成功了！快去邮箱确认再来登陆吧~</div>
             {% endif %}
             {% csrf_token %}
             <h3 class="text-center">Welcome</h3>
