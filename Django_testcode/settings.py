@@ -115,8 +115,9 @@ USE_TZ = False  #
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-# email
+# email setting
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.qq.com'
 EMAIL_PORT = 465
@@ -125,5 +126,3 @@ EMAIL_HOST_USER = 'wushuangmail@foxmail.com'
 EMAIL_HOST_PASSWORD = 'aywrbqycafcmbfed'
 
 CONFIRM_DAYS = 3
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
