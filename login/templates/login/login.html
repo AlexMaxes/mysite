@@ -34,17 +34,23 @@
                 {{ login_form.password }}
             </div>
             <div class="form-group">
-                {{ login_form.captcha.label_tag }}
-                {{ login_form.captcha }}
+                {#                {{ login_form.captcha.label_tag }}#}
+                {#                {{ login_form.captcha }}#}
+                <label for="id_captcha_1">Verification:</label>
+                <img src="{{ image_url }}" alt="captcha" class="captcha">
+                <button class="js-captcha-refresh btn btn-info">refresh</button>
+                <input type="hidden" name="captcha_0" value="{{ hash_key }}" required=""
+                       id="id_captcha_0">
+                <input type="text" name="captcha_1" required="" id="id_captcha_1"
+                       autocapitalize="off" autocomplete="off" autocorrect="off"
+                       spellcheck="false">
             </div>
-            {#            <div class="form-group">#}
-            {#                <label for="id_username">UserName:</label>#}
-            {#                <input type="text" name="username" class="form-control" id="id_username" placeholder="用户名" autofocus required>#}
-            {#            </div>#}
+
             {#            <div class="form-group">#}
             {#                <label for="id_password">Password:</label>#}
             {#                <input type="password" name="password" class="form-control" id="id_password" placeholder="密码" required>#}
             {#            </div>#}
+
             <div>
                 <a href="/register" class="text-success">
                     <ins>Sign Up</ins>
@@ -59,5 +65,16 @@
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
 <script src="https://cdn.bootcss.com/popper.js/1.15.0/esm/popper.js"></script>
 <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    $('.js-captcha-refresh').click(function () {
+        $form = $(this).parents('form');
+        $.getJSON($(this).data('url'), {}, function (json) {
+            // This should update your captcha image src and captcha hidden input
+            $("img.captcha").attr("src", json.image_url);
+            $("#id_captcha_0").val(json.key);
+        });
+        return false;
+    });
+</script>
 </body>
 </html>

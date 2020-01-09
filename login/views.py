@@ -5,8 +5,9 @@ from . import models
 from . import forms
 import hashlib
 import datetime
-
-
+from captcha.models import CaptchaStore
+from captcha.helpers import captcha_image_url
+from django.http import JsonResponse
 # Create your views here.
 
 def index(request):
@@ -19,6 +20,14 @@ def login(request):
     if request.session.get('is_login', None):
         # 若已登录
         return redirect('/index/')
+    hash_key = CaptchaStore.generate_key()
+    image_url = captcha_image_url(hash_key)
+    if request.is_ajax():  # 请求ajax则返回新的image_url和key
+        result = dict()
+        result['key'] = CaptchaStore.generate_key()
+        result['image_url'] = captcha_image_url(result['key'])
+        return JsonResponse(result)
+
     if request.method == "POST":
         login_form = forms.UserForm(request.POST)
         # username = request.POST.get('username')
@@ -65,7 +74,13 @@ def login(request):
 def register(request):
     if request.session.get('is_login', None):
         return redirect('/index/')
-
+    hash_key = CaptchaStore.generate_key()
+    image_url = captcha_image_url(hash_key)
+    if request.is_ajax():  # 请求ajax则返回新的image_url和key
+        result = dict()
+        result['key'] = CaptchaStore.generate_key()
+        result['image_url'] = captcha_image_url(result['key'])
+        return JsonResponse(result)
     if request.method == 'POST':
         register_form = forms.RegisterForm(request.POST)
         message = "是不是哪填的格式不对？"
