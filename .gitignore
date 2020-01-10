@@ -7,6 +7,7 @@
 virtualEnv
 #settings.py
 db.sqlite3
+run.log
 Django_testcode/__pycache__/
 login/__pycache__/
 login/migrations/__pycache__/
